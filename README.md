@@ -3,9 +3,8 @@
 Monte Carlo simulation of the World Cup 2026 semifinals and final, live data + real bookmaker
 odds, calibrated with `scipy.optimize`.
 
-Built by Soham Chatterjee.
 
-**Live demo:** _add your Streamlit Cloud URL here after deploying_
+**Live demo:** https://sc2k26-worldcup.streamlit.app/
 
 ## What it does
 
