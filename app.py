@@ -14,6 +14,65 @@ from simulate import simulate_one_bracket, simulate_tournament
 
 st.set_page_config(page_title="WC 2026 Champion Predictor", page_icon="🏆", layout="wide")
 
+st.markdown("""
+<style>
+/* Football pitch backdrop -- deep stadium green with faint pitch stripes + center circle glow */
+.stApp {
+    background:
+        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px),
+        repeating-linear-gradient(
+            0deg,
+            #163a1e 0px, #163a1e 90px,
+            #1a4322 90px, #1a4322 180px
+        );
+    background-size: auto, 100% 180px;
+}
+
+/* Center-circle + halfway-line watermark, fixed so it doesn't scroll oddly */
+.stApp::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 50% 50%, transparent 0, transparent 130px, rgba(255,255,255,0.06) 132px, rgba(255,255,255,0.06) 134px, transparent 136px),
+        linear-gradient(90deg, transparent calc(50% - 1px), rgba(255,255,255,0.06) calc(50% - 1px), rgba(255,255,255,0.06) calc(50% + 1px), transparent calc(50% + 1px));
+    z-index: 0;
+}
+
+/* Frosted cards for readability over the pitch */
+[data-testid="stVerticalBlock"] > div:has(> [data-testid="stMarkdownContainer"]) {
+    position: relative;
+    z-index: 1;
+}
+div.block-container {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 16px;
+    padding: 2rem 2.5rem 2.5rem;
+    margin-top: 1rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+}
+
+/* Sidebar: dark stadium-tunnel feel */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #0d2412 0%, #163a1e 100%);
+}
+[data-testid="stSidebar"] * {
+    color: #eef5ee !important;
+}
+[data-testid="stSidebar"] input {
+    color: #1a1a2e !important;
+}
+
+/* Title flourish */
+h1 {
+    text-shadow: 0 1px 0 rgba(0,0,0,0.05);
+}
+</style>
+""", unsafe_allow_html=True)
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 
 FLAGS = {"France": "🇫🇷", "Spain": "🇪🇸", "Argentina": "🇦🇷", "England": "🏴"}
